@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ATUAL=$(dconf read /org/gnome/gnome-panel/layout/toplevels/top-panel/auto-hide)
+
+NOVO=false
+[ $ATUAL == "false" ] && NOVO=true
+
+dconf write /org/gnome/gnome-panel/layout/toplevels/top-panel/auto-hide $NOVO
+dconf write /org/gnome/gnome-panel/layout/toplevels/bottom-panel/auto-hide $NOVO
