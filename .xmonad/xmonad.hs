@@ -45,9 +45,9 @@ myKeys = concat
     ]
     , [ ( "M-d",      spawn "exec nautilus"          )
     ]
-    , [ ( "M-n",      spawn "xrandr --output DVI1 --brightness .3"        )
+    , [ ( "M-[",      spawn "xrandr --output DVI1 --brightness .3"        )
     ]
-    , [ ( "M-b",      spawn "xrandr --output DVI1 --brightness 1"        )
+    , [ ( "M-]",      spawn "xrandr --output DVI1 --brightness 1"        )
     ]
     , [ ( "M-m",      spawn "xcalib -invert -alter"        )
     ]
