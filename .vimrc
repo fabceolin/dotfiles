@@ -1,6 +1,6 @@
 " Tab key produces 4 spaces, and tab characters are converted to spaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set background=dark
 " when you start searching text with /, search is performed at every new character insertion
