@@ -28,11 +28,15 @@ main = do
 desktop "gnome" = gnomeConfig 
 desktop "kde" = kde4Config
 desktop "xfce" = xfceConfig
+-- Fedora 16
 desktop "xmonad-gnome" = gnomeConfig {  modMask = mod4Mask
                                         , borderWidth = 0
                                      }  `additionalKeysP` myKeys
 
-desktop _ = desktopConfig
+-- Ubuntu 12.10
+desktop _ = desktopConfig {  modMask = mod4Mask
+                             , borderWidth = 0
+                          }  `additionalKeysP` myKeys
 
 myKeys = concat
   [
