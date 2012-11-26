@@ -1,0 +1,134 @@
+<config>
+ <paths>
+  <path recursive="0">/home/ceolin/dotfiles/dicionarios</path>
+ </paths>
+ <sounddirs/>
+ <dictionaryOrder id="0" name="">
+  <dictionary name="Babylon English">f8bba1e93033f3ab5a665ff45df3e1c0</dictionary>
+  <dictionary name="English (US) Morphology">057c5f80b4f5d9cc7996090eac564069</dictionary>
+  <dictionary name="Babylon English-Portuguese">1fb169b2691ed4c155de82d005f4200c</dictionary>
+  <dictionary name="Google Translate">e1c35b032861d2f333d3c6a6a3817bfd</dictionary>
+  <dictionary name="Babylon Portuguese-English">b103feee3ef1ff4f1bf54308873af566</dictionary>
+  <dictionary name="Dicionário Aurélio da Língua Portuguesa">f89ea9e10099d8b5fd6cf45e94abbaa5</dictionary>
+  <dictionary name="English Wiktionary">affcf9678e7bfe701c9b071f97eccba3</dictionary>
+  <dictionary name="English Wikipedia">ae6f89aac7151829681b85f035d54e48</dictionary>
+  <dictionary name="Portuguese Wikipedia">96957cb2ad73a20c7a1d561fc83c253a</dictionary>
+  <dictionary name="Portuguese Wiktionary">ed4c3929196afdd93cc08b9a903aad6a</dictionary>
+  <mutedDictionaries/>
+ </dictionaryOrder>
+ <inactiveDictionaries id="0" name="">
+  <mutedDictionaries/>
+ </inactiveDictionaries>
+ <groups nextId="1"/>
+ <hunspell dictionariesPath="/usr/share/myspell">
+  <enabled>en_US</enabled>
+ </hunspell>
+ <transliteration>
+  <enableRussianTransliteration>0</enableRussianTransliteration>
+  <enableGermanTransliteration>0</enableGermanTransliteration>
+  <enableGreekTransliteration>0</enableGreekTransliteration>
+  <romaji>
+   <enable>0</enable>
+   <enableHepburn>1</enableHepburn>
+   <enableNihonShiki>0</enableNihonShiki>
+   <enableKunreiShiki>0</enableKunreiShiki>
+   <enableHiragana>1</enableHiragana>
+   <enableKatakana>1</enableKatakana>
+  </romaji>
+ </transliteration>
+ <forvo>
+  <enable>1</enable>
+  <apiKey>b2afdcbc968961ff57a021b2b5593907</apiKey>
+  <languageCodes>en</languageCodes>
+ </forvo>
+ <mediawikis>
+  <mediawiki enabled="1" url="http://en.wikipedia.org/w" id="ae6f89aac7151829681b85f035d54e48" name="English Wikipedia"/>
+  <mediawiki enabled="1" url="http://en.wiktionary.org/w" id="affcf9678e7bfe701c9b071f97eccba3" name="English Wiktionary"/>
+  <mediawiki enabled="0" url="http://ru.wikipedia.org/w" id="8e0c1c2b6821dab8bdba8eb869ca7176" name="Russian Wikipedia"/>
+  <mediawiki enabled="0" url="http://ru.wiktionary.org/w" id="b09947600ae3902654f8ad4567ae8567" name="Russian Wiktionary"/>
+  <mediawiki enabled="0" url="http://de.wikipedia.org/w" id="a8a66331a1242ca2aeb0b4aed361c41d" name="German Wikipedia"/>
+  <mediawiki enabled="0" url="http://de.wiktionary.org/w" id="21c64bca5ec10ba17ff19f3066bc962a" name="German Wiktionary"/>
+  <mediawiki enabled="1" url="http://pt.wikipedia.org/w" id="96957cb2ad73a20c7a1d561fc83c253a" name="Portuguese Wikipedia"/>
+  <mediawiki enabled="1" url="http://pt.wiktionary.org/w" id="ed4c3929196afdd93cc08b9a903aad6a" name="Portuguese Wiktionary"/>
+ </mediawikis>
+ <websites>
+  <website enabled="0" url="http://www.google.com/dictionary?aq=f&amp;langpair=en|en&amp;q=%GDWORD%&amp;hl=en" id="b88cb2898e634c6638df618528284c2d" name="Google En-En (Collins)"/>
+  <website enabled="0" url="http://www.urbandictionary.com/define.php?term=%GDWORD%" id="f376365a0de651fd7505e7e5e683aa45" name="Urban Dictionary"/>
+  <website enabled="0" url="http://multitran.ru/c/m.exe?CL=1&amp;l1=1&amp;s=%GD1251%" id="324ca0306187df7511b26d3847f4b07c" name="Multitran (En)"/>
+  <website enabled="0" url="http://www.abbyyonline.ru/translate.aspx?LingvoAction=translate&amp;Ln=1&amp;words=%GDWORD%" id="924db471b105299c82892067c0f10787" name="Lingvo (En-Ru)"/>
+  <website enabled="0" url="http://michaelis.uol.com.br/moderno/ingles/index.php?lingua=portugues-ingles&amp;palavra=%GDISO1%" id="087a6d65615fb047f4c80eef0a9465db" name="Michaelis (Pt-En)"/>
+  <website enabled="0" url="http://translate.google.com/?sl=en&amp;tl=es&amp;js=n&amp;prev=_t&amp;hl=pt-BR&amp;ie=UTF-8&amp;layout=2&amp;eotf=1&amp;text=%GDWORD%#submit" id="50fd3e3839d821d442a6175d8b44e5b7" name="Google Translate (En-pt)"/>
+  <website enabled="0" url="file:///tmp/funcoeszz.sh" id="8a0b52d822e0418bfa9b97226a27434c" name="Teste"/>
+ </websites>
+ <programs>
+  <program enabled="0" commandLine="festival --tts" type="0" id="428b4c2b905ef568a43d9a16f59559b0" name="Festival"/>
+  <program enabled="0" commandLine="espeak %GDWORD%" type="0" id="2cf8b3a60f27e1ac812de0b57c148340" name="Espeak"/>
+  <program enabled="0" commandLine="man -a --html=/bin/cat %GDWORD%" type="2" id="4f898f7582596cea518c6b0bfdceb8b3" name="Manpages"/>
+  <program enabled="1" commandLine="/home/ceolin/bin/funcoeszz.sh tradutor en-pt %GDWORD%" type="1" id="e1c35b032861d2f333d3c6a6a3817bfd" name="Google Translate"/>
+ </programs>
+ <mutedDictionaries/>
+ <popupMutedDictionaries/>
+ <preferences>
+  <interfaceLanguage></interfaceLanguage>
+  <displayStyle></displayStyle>
+  <newTabsOpenAfterCurrentOne>0</newTabsOpenAfterCurrentOne>
+  <newTabsOpenInBackground>1</newTabsOpenInBackground>
+  <hideSingleTab>0</hideSingleTab>
+  <mruTabOrder>0</mruTabOrder>
+  <hideMenubar>0</hideMenubar>
+  <enableTrayIcon>1</enableTrayIcon>
+  <startToTray>0</startToTray>
+  <closeToTray>1</closeToTray>
+  <autoStart>1</autoStart>
+  <doubleClickTranslates>1</doubleClickTranslates>
+  <selectWordBySingleClick>0</selectWordBySingleClick>
+  <escKeyHidesMainWindow>0</escKeyHidesMainWindow>
+  <zoomFactor>1</zoomFactor>
+  <wordsZoomLevel>0</wordsZoomLevel>
+  <enableMainWindowHotkey>1</enableMainWindowHotkey>
+  <mainWindowHotkey>Ctrl+F10, Ctrl+F10</mainWindowHotkey>
+  <enableClipboardHotkey>1</enableClipboardHotkey>
+  <clipboardHotkey>Ctrl+T, Ctrl+T</clipboardHotkey>
+  <enableScanPopup>0</enableScanPopup>
+  <startWithScanPopupOn>0</startWithScanPopupOn>
+  <enableScanPopupModifiers>0</enableScanPopupModifiers>
+  <scanPopupModifiers>0</scanPopupModifiers>
+  <scanPopupAltMode>0</scanPopupAltMode>
+  <scanPopupAltModeSecs>3</scanPopupAltModeSecs>
+  <scanToMainWindow>0</scanToMainWindow>
+  <scanPopupUseUIAutomation>0</scanPopupUseUIAutomation>
+  <scanPopupUseIAccessibleEx>0</scanPopupUseIAccessibleEx>
+  <scanPopupUseGDMessage>0</scanPopupUseGDMessage>
+  <pronounceOnLoadMain>0</pronounceOnLoadMain>
+  <pronounceOnLoadPopup>0</pronounceOnLoadPopup>
+  <useExternalPlayer>1</useExternalPlayer>
+  <useWindowsPlaySound>0</useWindowsPlaySound>
+  <audioPlaybackProgram>mplayer</audioPlaybackProgram>
+  <proxyserver enabled="0">
+   <type>0</type>
+   <host></host>
+   <port>3128</port>
+   <user></user>
+   <password></password>
+  </proxyserver>
+  <checkForNewReleases>1</checkForNewReleases>
+  <disallowContentFromOtherSites>0</disallowContentFromOtherSites>
+  <enableWebPlugins>0</enableWebPlugins>
+  <maxStringsInHistory>500</maxStringsInHistory>
+  <storeHistory>1</storeHistory>
+  <alwaysExpandOptionalParts>1</alwaysExpandOptionalParts>
+ </preferences>
+ <lastMainGroupId>0</lastMainGroupId>
+ <lastPopupGroupId>0</lastPopupGroupId>
+ <popupWindowState>AAAA/wAAAAH9AAAAAAAAAhcAAAGTAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAQAAAAEAAAAaAGQAaQBjAHQAaQBvAG4AYQByAHkAQgBhAHIDAAAAAP////8AAAAAAAAAAA==</popupWindowState>
+ <popupWindowGeometry>AdnQywABAAAAAAJYAAAAPgAABI4AAAHQAAACWAAAAD4AAASOAAAB0AAAAAAAAA==</popupWindowGeometry>
+ <pinPopupWindow>0</pinPopupWindow>
+ <mainWindowState>AAAA/wAAAAH9AAAAAgAAAAAAAADMAAAD6vwCAAAAAfsAAAAUAHMAZQBhAHIAYwBoAFAAYQBuAGUBAAAALgAAA+oAAAByAP///wAAAAEAAACeAAAD6vwCAAAAAfsAAAASAGQAaQBjAHQAcwBQAGEAbgBlAQAAAC4AAAPqAAAAYAD///8AAAUaAAAD6gAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFABuAGEAdgBUAG8AbwBsAGIAYQByAQAAAAD/////AAAAAAAAAAAAAAAaAGQAaQBjAHQAaQBvAG4AYQByAHkAQgBhAHIBAAAA2P////8AAAAAAAAAAA==</mainWindowState>
+ <mainWindowGeometry>AdnQywABAAAAAAAAAAAAAQAABo8AAAQYAAAAAAAAAAEAAAaPAAAEGAAAAAAAAA==</mainWindowGeometry>
+ <dictInfoGeometry></dictInfoGeometry>
+ <timeForNewReleaseCheck>2012-11-28T17:15:55</timeForNewReleaseCheck>
+ <skippedRelease></skippedRelease>
+ <showingDictBarNames>0</showingDictBarNames>
+ <usingSmallIconsInToolbars>1</usingSmallIconsInToolbars>
+ <maxDictionaryRefsInContextMenu>20</maxDictionaryRefsInContextMenu>
+</config>
