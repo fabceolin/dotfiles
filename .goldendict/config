@@ -1,22 +1,30 @@
 <config>
  <paths>
-  <path recursive="0">/home/ceolin/dotfiles/dicionarios</path>
+  <path recursive="1">/home/ceolin/dicionarios</path>
  </paths>
  <sounddirs/>
  <dictionaryOrder id="0" name="">
-  <dictionary name="Babylon English">f8bba1e93033f3ab5a665ff45df3e1c0</dictionary>
+  <dictionary name="Babylon English">e752d3f0cdbae9a1a46a09b2a74cba42</dictionary>
+  <dictionary name="WordNet® 3.0 (En-En)">e81fec20aa8748fecade30d6e44d159e</dictionary>
   <dictionary name="English (US) Morphology">057c5f80b4f5d9cc7996090eac564069</dictionary>
-  <dictionary name="Babylon English-Portuguese">1fb169b2691ed4c155de82d005f4200c</dictionary>
+  <dictionary name="Moby Thesaurus II">de55a0e75c6549f58c04b862e2c69491</dictionary>
+  <dictionary name="gcide">81f8ea000e9dfbd3d3578e1da75b03f5</dictionary>
+  <dictionary name="Babylon English-Portuguese">468ba5e54afca6ddc1fc2ca1f0a40998</dictionary>
   <dictionary name="Google Translate">e1c35b032861d2f333d3c6a6a3817bfd</dictionary>
-  <dictionary name="Babylon Portuguese-English">b103feee3ef1ff4f1bf54308873af566</dictionary>
-  <dictionary name="Dicionário Aurélio da Língua Portuguesa">f89ea9e10099d8b5fd6cf45e94abbaa5</dictionary>
-  <dictionary name="English Wiktionary">affcf9678e7bfe701c9b071f97eccba3</dictionary>
-  <dictionary name="English Wikipedia">ae6f89aac7151829681b85f035d54e48</dictionary>
-  <dictionary name="Portuguese Wikipedia">96957cb2ad73a20c7a1d561fc83c253a</dictionary>
-  <dictionary name="Portuguese Wiktionary">ed4c3929196afdd93cc08b9a903aad6a</dictionary>
+  <dictionary name="Dicionário Aurélio da Língua Portuguesa">12b0034a549e0f362dd462627d9ffe39</dictionary>
+  <dictionary name="Babylon Portuguese-English">754104f364d815b5776273c7fd77c0b4</dictionary>
+  <dictionary name="Forvo (En)">13f0f5243c943ec5826f25d35b4f7477</dictionary>
   <mutedDictionaries/>
  </dictionaryOrder>
  <inactiveDictionaries id="0" name="">
+  <dictionary name="Dicionário Aurélio da Língua Portuguesa">5bb6bf4b24c9c832960d15dc0fae64ee</dictionary>
+  <dictionary name="Portuguese Wiktionary">ed4c3929196afdd93cc08b9a903aad6a</dictionary>
+  <dictionary name="English Wiktionary">affcf9678e7bfe701c9b071f97eccba3</dictionary>
+  <dictionary name="Portuguese Wikipedia">96957cb2ad73a20c7a1d561fc83c253a</dictionary>
+  <dictionary name="English Wikipedia">ae6f89aac7151829681b85f035d54e48</dictionary>
+  <dictionary name="Babylon Portuguese-English">b100b7eb95b2b5962a57a68c59edab20</dictionary>
+  <dictionary name="Babylon English">21fd96d058869e863a5c34dd81873a03</dictionary>
+  <dictionary name="Babylon English-Portuguese">91e58218843e46a200323012c3019a0c</dictionary>
   <mutedDictionaries/>
  </inactiveDictionaries>
  <groups nextId="1"/>
@@ -120,13 +128,13 @@
  </preferences>
  <lastMainGroupId>0</lastMainGroupId>
  <lastPopupGroupId>0</lastPopupGroupId>
- <popupWindowState>AAAA/wAAAAH9AAAAAAAAAhcAAAGTAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAQAAAAEAAAAaAGQAaQBjAHQAaQBvAG4AYQByAHkAQgBhAHIDAAAAAP////8AAAAAAAAAAA==</popupWindowState>
+ <popupWindowState>AAAA/wAAAAH9AAAAAAAAAAAAAAAAAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAQAAAAEAAAAaAGQAaQBjAHQAaQBvAG4AYQByAHkAQgBhAHIDAAAAAP////8AAAAAAAAAAA==</popupWindowState>
  <popupWindowGeometry>AdnQywABAAAAAAJYAAAAPgAABI4AAAHQAAACWAAAAD4AAASOAAAB0AAAAAAAAA==</popupWindowGeometry>
  <pinPopupWindow>0</pinPopupWindow>
- <mainWindowState>AAAA/wAAAAH9AAAAAgAAAAAAAADMAAAD6vwCAAAAAfsAAAAUAHMAZQBhAHIAYwBoAFAAYQBuAGUBAAAALgAAA+oAAAByAP///wAAAAEAAACeAAAD6vwCAAAAAfsAAAASAGQAaQBjAHQAcwBQAGEAbgBlAQAAAC4AAAPqAAAAYAD///8AAAUaAAAD6gAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFABuAGEAdgBUAG8AbwBsAGIAYQByAQAAAAD/////AAAAAAAAAAAAAAAaAGQAaQBjAHQAaQBvAG4AYQByAHkAQgBhAHIBAAAA2P////8AAAAAAAAAAA==</mainWindowState>
- <mainWindowGeometry>AdnQywABAAAAAAAAAAAAAQAABo8AAAQYAAAAAAAAAAEAAAaPAAAEGAAAAAAAAA==</mainWindowGeometry>
+ <mainWindowState>AAAA/wAAAAH9AAAAAgAAAAAAAADMAAADsPwCAAAAAfsAAAAUAHMAZQBhAHIAYwBoAFAAYQBuAGUBAAAALgAAA7AAAAByAP///wAAAAEAAACbAAADsPwCAAAAAfsAAAASAGQAaQBjAHQAcwBQAGEAbgBlAQAAAC4AAAOwAAAAYAD///8AAAHVAAADsAAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFABuAGEAdgBUAG8AbwBsAGIAYQByAQAAAAD/////AAAAAAAAAAAAAAAaAGQAaQBjAHQAaQBvAG4AYQByAHkAQgBhAHIBAAAA2P////8AAAAAAAAAAA==</mainWindowState>
+ <mainWindowGeometry>AdnQywABAAAAAAAAAAAAHgAAA0cAAAP7AAAAAAAAAB4AAANHAAAD+wAAAAAAAA==</mainWindowGeometry>
  <dictInfoGeometry></dictInfoGeometry>
- <timeForNewReleaseCheck>2012-11-28T17:15:55</timeForNewReleaseCheck>
+ <timeForNewReleaseCheck>2013-01-12T22:41:33</timeForNewReleaseCheck>
  <skippedRelease></skippedRelease>
  <showingDictBarNames>0</showingDictBarNames>
  <usingSmallIconsInToolbars>1</usingSmallIconsInToolbars>
