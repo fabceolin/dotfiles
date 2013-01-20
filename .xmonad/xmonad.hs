@@ -55,6 +55,16 @@ myKeys = concat
     ]
     , [ ( "M-m",      spawn "xcalib -invert -alter"        )
     ]
+    , [ ( "M-s",      spawn "$HOME/bin/screenshot"        )
+    ]
+    , [ ( "M-t",      spawn "$HOME/bin/killcast"        )
+    ]
+    , [ ( "m-c",      spawn "$HOME/bin/audiocastInternalAudioAndMicrofone"        )
+    ]
+    , [ ( "m-v",      spawn "$HOME/bin/screencastInternalAudioAndMicrofone"        )
+    ]
+
+
   ]
 
 -- M-b put the application on fullscreen without gnome-panels
