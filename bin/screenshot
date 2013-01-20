@@ -1,0 +1,4 @@
+#!/bin/bash
+FILENAME="/tmp/screenshot-$(uuidgen).webm"
+gst-launch ximagesrc num-buffers=1 !  ffmpegcolorspace ! queue ! jpegenc ! filesink location=$FILENAME
+echo $FILENAME
