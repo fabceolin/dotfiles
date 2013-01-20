@@ -1,2 +1,0 @@
-#!/bin/bash
-gst-launch ximagesrc !  ffmpegcolorspace ! queue !  vp8enc quality=0 speed=2 bitrate=1 threads=4 ! mux. alsasrc ! audio/x-raw-int ! queue ! audioconvert ! vorbisenc quality=.1 max-bitrate=6000 ! mux. webmmux name=mux ! filesink location=screencast.webm
