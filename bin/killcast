@@ -1,2 +1,5 @@
 #!/bin/bash
-kill $(cat /tmp/gst-record.pid) && rm -Rf /tmp/gst-record.pid
+sleep 2
+kill -USR2 $(cat /tmp/gst-record.pid) || killall -USR2 gst-launch-0.10
+kill $(cat /tmp/gst-record.pid) || killall gst-launch-0.10
+rm /tmp/gst-record.pid
