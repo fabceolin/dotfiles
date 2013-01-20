@@ -1,0 +1,3 @@
+#!/bin/bash
+gst-launch ximagesrc !  ffmpegcolorspace ! queue !  vp8enc quality=10 speed=2 bitrate=1 threads=4 ! mux. pulsesrc device=alsa_output.usb-05e1_USB_VoIP_Device-00-Device.analog-stereo.monitor ! audio/x-raw-int ! queue ! audioconvert ! vorbisenc quality=.1 max-bitrate=6000 ! mux. webmmux name=mux ! filesink location=screencast.webm
+#cat ~/.pulse/*sink

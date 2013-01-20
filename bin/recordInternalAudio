@@ -1,0 +1,5 @@
+#!/bin/bash
+FILENAME="audiocast-$(uuidgen).mp3"
+gst-launch pulsesrc device=alsa_output.usb-05e1_USB_VoIP_Device-00-Device.analog-stereo.monitor ! audio/x-raw-int ! queue ! audioconvert ! lamemp3enc bitrate=8 quality=0 encoding-engine-quality=2 mono=true ! filesink location=$FILENAME
+echo $FILENAME
+
