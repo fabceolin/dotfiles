@@ -5,3 +5,4 @@ PID=$!
 echo $PID >/tmp/gst-record.pid
 echo $FILENAME
 echo $FILENAME >/tmp/gst-last
+notify-send -t0 "Video" "$FILENAME"

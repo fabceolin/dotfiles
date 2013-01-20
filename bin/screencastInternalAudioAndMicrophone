@@ -5,3 +5,4 @@ gst-launch ximagesrc !  ffmpegcolorspace ! queue ! vp8enc quality=10 speed=2 bit
 echo $PID >/tmp/gst-record.pid
 echo $FILENAME
 echo $FILENAME >/tmp/gst-last
+notify-send -t0 "Video" "$FILENAME"

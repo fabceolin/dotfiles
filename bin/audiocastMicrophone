@@ -4,4 +4,4 @@ gst-launch pulsesrc ! audio/x-raw-int ! queue ! audioconvert ! lamemp3enc bitrat
 echo $PID >/tmp/gst-record.pid
 echo $FILENAME
 echo $FILENAME >/tmp/gst-last
-
+notify-send -t0 "Audio" "$FILENAME"

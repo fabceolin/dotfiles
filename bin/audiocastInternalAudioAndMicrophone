@@ -4,4 +4,4 @@ gst-launch pulsesrc device=$(echo "$(cat $(find ~/.pulse/ -name \*default-sink\*
 echo $PID >/tmp/gst-record.pid
 echo $FILENAME
 echo $FILENAME >/tmp/gst-last
-
+notify-send -t0 "Audio" "$FILENAME"
