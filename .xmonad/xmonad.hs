@@ -57,7 +57,7 @@ myKeys = concat
     ]
     , [ ( "M-s",      spawn "$HOME/bin/screenshot"        )
     ]
-    , [ ( "M-t",      spawn "$HOME/bin/killcast"        )
+    , [ ( "M-f",      spawn "$HOME/bin/killcast"        )
     ]
     , [ ( "m-c",      spawn "$HOME/bin/audiocastInternalAudioAndMicrofone"        )
     ]
