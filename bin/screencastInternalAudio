@@ -1,0 +1,6 @@
+#!/bin/bash
+FILENAME="/tmp/screencast-$(uuidgen).webm"
+gst-launch ximagesrc !  ffmpegcolorspace ! queue !  vp8enc quality=10 speed=2 bitrate=1 threads=4 ! mux. pulsesrc device=$(echo "$(cat $(find ~/.pulse/ -name \*default-sink\*)).monitor") ! audio/x-raw-int ! queue ! audioconvert ! vorbisenc quality=.1 max-bitrate=6000 ! mux. webmmux name=mux ! filesink location=$FILENAME
+echo $PID >/tmp/gst-record.pid
+echo $FILENAME
+echo $FILENAME >/tmp/gst-last

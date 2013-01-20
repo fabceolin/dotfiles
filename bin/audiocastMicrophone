@@ -1,0 +1,7 @@
+#!/bin/bash
+FILENAME="/tmp/audiocast-$(uuidgen).mp3"
+gst-launch pulsesrc ! audio/x-raw-int ! queue ! audioconvert ! lamemp3enc bitrate=8 quality=0 encoding-engine-quality=2 mono=true ! filesink location=$FILENAME
+echo $PID >/tmp/gst-record.pid
+echo $FILENAME
+echo $FILENAME >/tmp/gst-last
+
