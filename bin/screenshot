@@ -1,4 +1,6 @@
 #!/bin/bash
-FILENAME="/tmp/screenshot-$(uuidgen).webm"
+FILENAME="/tmp/screenshot-$(uuidgen).jpg"
+notify-send -t 0 "Screenshot" "$FILENAME"
 gst-launch ximagesrc num-buffers=1 !  ffmpegcolorspace ! queue ! jpegenc ! filesink location=$FILENAME
+pinta $FILENAME
 echo $FILENAME
