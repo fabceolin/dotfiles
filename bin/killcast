@@ -1,0 +1,2 @@
+#!/bin/bash
+kill $(cat /tmp/gst-record.pid) && rm -Rf /tmp/gst-record.pid
