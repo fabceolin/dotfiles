@@ -3,3 +3,8 @@ sleep 2
 kill -USR2 $(cat /tmp/gst-record.pid) || killall -USR2 gst-launch-0.10
 kill $(cat /tmp/gst-record.pid) || killall gst-launch-0.10
 rm /tmp/gst-record.pid
+FILENAME=$(cat /tmp/gst-last)
+TEMP="$(mktemp).mp3"
+mv $FILENAME $TEMP
+sox $TEMP $FILENAME silence 1 0 -40d 1 .5 -40d
+rm $TEMP
