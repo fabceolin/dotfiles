@@ -59,12 +59,10 @@ myKeys = concat
     ]
     , [ ( "M-f",      spawn "$HOME/bin/killcast"        )
     ]
-    , [ ( "m-c",      spawn "$HOME/bin/audiocastInternalAudioAndMicrofone"        )
+    , [ ( "m-c",      spawn "$HOME/bin/audiocastInternalAudioAndMicrophone"        )
     ]
-    , [ ( "m-v",      spawn "$HOME/bin/screencastInternalAudioAndMicrofone"        )
+    , [ ( "m-v",      spawn "$HOME/bin/screencastInternalAudioAndMicrophone"        )
     ]
-
-
   ]
 
 -- M-b put the application on fullscreen without gnome-panels
