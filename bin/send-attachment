@@ -1,0 +1,7 @@
+ #!/bin/bash
+ SUBJ=$1
+ FILE=$2
+ TEXT=$3
+ EMAIL=$4
+
+ echo "$TEXT" | mutt -a "$FILE" -s "$SUBJ" -- $EMAIL
