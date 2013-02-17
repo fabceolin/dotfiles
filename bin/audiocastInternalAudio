@@ -1,6 +1,8 @@
 #!/bin/bash
-FILENAME="/tmp/audiocast-$(uuidgen).mp3"
-gst-launch pulsesrc device=$(echo "$(cat $(find ~/.pulse/ -name \*default-sink\*)).monitor") ! audio/x-raw-int ! queue ! audioconvert ! lamemp3enc bitrate=8 quality=0 encoding-engine-quality=2 mono=true ! filesink location=$FILENAME &
+FILENAME="/tmp/audiocast-$(uuidgen).ogg"
+# gst-launch-0.10 pulsesrc device=$(echo "$(cat $(find ~/.pulse/ -name \*default-sink\*)).monitor") ! audio/x-raw-int ! queue ! audioconvert ! lamemp3enc bitrate=8 quality=0 encoding-engine-quality=2 mono=true ! filesink location=$FILENAME &
+gst-launch-1.0 -e pulsesrc provide-clock=1 device=$(echo "$(cat $(find ~/.pulse/ -name \*default-sink\*)).monitor") '!'  audioconvert '!' audioresample '!' vorbisenc quality=0.1 '!' oggmux name=mux '!' filesink location=$FILENAME
+PID=$!
 echo $PID >/tmp/gst-record.pid
 echo $FILENAME
 echo $FILENAME >/tmp/gst-last

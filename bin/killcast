@@ -1,11 +1,11 @@
 #!/bin/bash
 sleep 2
-kill -USR2 $(cat /tmp/gst-record.pid) || killall -USR2 gst-launch-0.10
-kill $(cat /tmp/gst-record.pid) || killall gst-launch-0.10
+kill -USR2 $(cat /tmp/gst-record.pid) || killall -USR2 gst-launch-1.0
+kill $(cat /tmp/gst-record.pid) || killall gst-launch-1.0
 rm /tmp/gst-record.pid
 FILENAME=$(cat /tmp/gst-last)
-if echo $FILENAME | grep -q  mp3 ; then
-  TEMP="$(mktemp).mp3"
+if echo $FILENAME | grep -q  ogg ; then
+  TEMP="${FILENAME%%.ogg}.orig.ogg"
   mv $FILENAME $TEMP
   sox $TEMP $FILENAME silence 1 0 -60d 1 0 -60d
   # rm $TEMP
