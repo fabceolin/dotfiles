@@ -11,6 +11,7 @@ import XMonad.Config.Xfce
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Accordion
 import XMonad.Layout.NoBorders
+import XMonad.Hooks.EwmhDesktops   -- fullscreenEventHook fixes chrome fullscreen
 
 import XMonad.Util.EZConfig
 
@@ -36,6 +37,7 @@ desktop "xmonad-gnome" = gnomeConfig {  modMask = mod4Mask
 -- Ubuntu 12.10
 desktop _ = desktopConfig {  modMask = mod4Mask
                              , borderWidth = 0
+--                             , handleEventHook    = fullscreenEventHook -- Only in darcs xmonad-contrib
                           }  `additionalKeysP` myKeys
 
 myKeys = concat
@@ -59,9 +61,9 @@ myKeys = concat
     ]
     , [ ( "M-f",      spawn "$HOME/bin/killcast"        )
     ]
-    , [ ( "M-c",      spawn "$HOME/bin/audiocastInternalAudioAndMicrophone"        )
+    , [ ( "M-v",      spawn "$HOME/bin/screencastInternalAudioAndMicrophone"        )
     ]
-    , [ ( "M-V",      spawn "$HOME/bin/screencastInternalAudioAndMicrophone"        )
+    , [ ( "M-g",      spawn "$HOME/bin/audiocastInternalAudioAndMicrophone"        )
     ]
   ]
 
