@@ -65,6 +65,8 @@ myKeys = concat
     ]
     , [ ( "M-g",      spawn "$HOME/bin/audiocastInternalAudioAndMicrophone"        )
     ]
+    , [ ( "M-l",      spawn "gnome-terminal -e orpie" )
+    ]
   ]
 
 -- M-b put the application on fullscreen without gnome-panels

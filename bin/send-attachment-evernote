@@ -1,0 +1,5 @@
+#!/bin/bash
+SUBJ="Attachment"
+FILE=$1
+TEXT="Veja o arquivo"
+send-attachment "$SUBJ" "$FILE" "$TEXT" $(cat ~/etc/evernote.email)

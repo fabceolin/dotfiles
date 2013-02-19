@@ -1,0 +1,7 @@
+#!/bin/bash
+TEXTO=$1
+export ZZOFF=""  # desligue funcoes indesejadas
+export ZZPATH="/home/ceolin/src/vcs/funcoeszz/funcoeszz"  # script
+export ZZDIR="/home/ceolin/src/vcs/funcoeszz/zz"
+source "$ZZPATH"
+zztradutor --audio "$TEXTO" | grep -v Função
