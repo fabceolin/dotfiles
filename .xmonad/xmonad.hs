@@ -51,9 +51,9 @@ myKeys = concat
     ]
     , [ ( "M-d",      spawn "exec nautilus"          )
     ]
-    , [ ( "M-[",      spawn "xrandr --output $(xrandr | grep -m 1 connected | awk '{ print $1 }') --brightness .3"        )
+    , [ ( "M-[",      spawn "xrandr --output $(xrandr | grep -m 1 ' connected' | awk '{ print $1 }') --brightness .3"        )
     ]
-    , [ ( "M-]",      spawn "xrandr --output $(xrandr | grep -m 1 connected | awk '{ print $1 }') --brightness 1"        )
+    , [ ( "M-]",      spawn "xrandr --output $(xrandr | grep -m 1 ' connected' | awk '{ print $1 }') --brightness 1"        )
     ]
     , [ ( "M-m",      spawn "xcalib -invert -alter"        )
     ]
@@ -65,7 +65,7 @@ myKeys = concat
     ]
     , [ ( "M-g",      spawn "$HOME/bin/audiocastInternalAudioAndMicrophone"        )
     ]
-    , [ ( "M-l",      spawn "gnome-terminal -e orpie" )
+    , [ ( "M-/",      spawn "gnome-terminal -e orpie" )
     ]
   ]
 
