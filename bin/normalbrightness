@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/xrandr --output $(xrandr | grep -m 1 ' connected' | awk '{ print $1 }') --brightness 1
