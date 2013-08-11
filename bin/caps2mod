@@ -1,0 +1,26 @@
+if ! xmodmap - <<EOF &> /dev/null
+remove Lock = Caps_Lock
+clear Mod3
+add Mod3 = Caps_Lock
+keycode 66 = Hyper_L NoSymbol Hyper_L
+clear Lock
+clear Mod1
+clear Mod4
+add Mod1 = Alt_L Alt_R 
+add Mod4 = Meta_L Meta_R Super_L
+add Mod3 = Hyper_L
+EOF
+ then 
+xmodmap - <<EOF
+clear Mod3
+add Mod3 = Caps_Lock
+keycode 66 = Hyper_L NoSymbol Hyper_L
+clear Lock
+clear Mod1
+clear Mod4
+add Mod1 = Alt_L Alt_R 
+add Mod4 = Meta_L Meta_R Super_L
+add Mod3 = Hyper_L
+EOF
+fi
+
