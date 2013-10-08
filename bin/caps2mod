@@ -1,3 +1,4 @@
+#!/bin/bash
 if ! xmodmap - <<EOF &> /dev/null
 remove Lock = Caps_Lock
 clear Mod3
