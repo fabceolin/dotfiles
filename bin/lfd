@@ -1,0 +1,9 @@
+#!/usr/bin/python
+import os
+import pipes
+
+filelist = os.listdir("/home/ceolin/Downloads")
+filelist = filter(lambda x: not os.path.isdir("/home/ceolin/Downloads/" + x), filelist)
+newest = max(filelist, key=lambda x: os.stat("/home/ceolin/Downloads/" + x).st_mtime)
+
+print (pipes.quote("/home/ceolin/Downloads/" + newest)),
