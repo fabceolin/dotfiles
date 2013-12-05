@@ -1,0 +1,1 @@
+/home/ceolin/src/vcs/vim-autotags/plugin/autotags.vim

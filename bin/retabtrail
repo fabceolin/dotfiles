@@ -1,0 +1,3 @@
+#!/bin/bash
+FILE=$1
+vim $FILE -c ':retab|:%s/\s\+$//e|w|q'
