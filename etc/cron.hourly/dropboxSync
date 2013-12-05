@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if /home/ceolin/dropbox.py status | grep "Dropbox isn't running!"; then
+	echo "$(/etc/init.d/dropbox start)" | mail -s 'Por favor, associe a conta Dropbox da MiningMath com o novo link' fabricio.ceolin+miningmathsrv@miningmath.com,katia.marinho@miningmath.com
+fi
+
+if /home/ceolin/dropbox.py status | grep "Waiting to be linked to an account..."; then
+	echo "$(/etc/init.d/dropbox start)" | mail -s 'Por favor, associe a conta Dropbox da MiningMath com o novo link' fabricio.ceolin+miningmathsrv@miningmath.com,katia.marinho@miningmath.com
+fi
+
+if /home/ceolin/dropbox.py status | grep "Can't sync"; then
+	/etc/init.d/dropbox stop
+	/etc/init.d/dropbox start
+fi
