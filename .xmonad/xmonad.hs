@@ -12,6 +12,8 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.Accordion
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.EwmhDesktops   -- fullscreenEventHook fixes chrome fullscreen
+import XMonad.Hooks.SetWMName
+
 
 import XMonad.Util.EZConfig
 
@@ -37,6 +39,7 @@ desktop "xmonad-gnome" = gnomeConfig {  modMask = mod4Mask
 -- Ubuntu 12.10
 desktop _ = desktopConfig {  modMask = mod4Mask
                              , borderWidth = 0
+--                             , startupHook = ewmhDesktopsStartup >> setWMName "LG3D"
 --                             , handleEventHook    = fullscreenEventHook -- Only in darcs xmonad-contrib
                           }  `additionalKeysP` myKeys
 
@@ -57,6 +60,10 @@ myKeys = concat
     ]
     , [ ( "M-m",      spawn "xcalib -invert -alter"        )
     ]
+    , [ ( "M-r",      spawn "dconf write /org/gnome/desktop/interface/gtk-theme '\"Ambiance\"'"        )
+    ]
+    , [ ( "M-e",      spawn "dconf write /org/gnome/desktop/interface/gtk-theme '\"Radiance\"'"        )
+    ]
     , [ ( "M-s",      spawn "$HOME/bin/screenshot"        )
     ]
     , [ ( "M-f",      spawn "$HOME/bin/killcast"        )
@@ -66,6 +73,10 @@ myKeys = concat
     , [ ( "M-g",      spawn "$HOME/bin/audiocastInternalAudioAndMicrophone"        )
     ]
     , [ ( "M-/",      spawn "gnome-terminal -e orpie" )
+    ]
+    , [ ( "M-y",      spawn "xdotool mousemove 840 525" )
+    ]
+    , [ ( "M-o",      spawn  "killall xmonad-x86_64-linux ; metacity --replace" )
     ]
   ]
 
