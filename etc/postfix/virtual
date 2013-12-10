@@ -1,0 +1,13 @@
+root@mail.miningmath.com	fabricio.ceolin@miningmath.com
+postmaster	fabricio.ceolin@miningmath.com
+root	fabricio.ceolin@miningmath.com
+MAILER-DAEMON	postmaster
+
+# Common aliases
+abuse	postmaster
+spam	postmaster
+
+mail.miningmath.com	fabricio.ceolin@miningmath.com
+repo_11@miningmath.com	fabricio.ceolin+repo11@miningmath.com
+ceolin@miningmath.com	fabricio.ceolin+ceolin@miningmath.com
+

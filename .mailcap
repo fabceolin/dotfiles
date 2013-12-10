@@ -1,0 +1,2 @@
+audio/amr; /usr/bin/play '%s'; description="AMR Audio Format"
+

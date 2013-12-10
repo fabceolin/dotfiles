@@ -12,7 +12,7 @@ set fileformats=unix,dos
 " docblock comments are continued when a newline is inserted
 set comments=sr:/*,mb:*,ex:*/
 syntax on
-filetype on
+filetype off
 filetype plugin on
 " check syntax with Ctrl + L
 autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
