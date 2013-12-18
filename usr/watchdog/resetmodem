@@ -1,12 +1,12 @@
 #!/bin/bash
 
-ssh root@192.168.0.254 "/sbin/ifconfig eth1 192.168.100.2"
-ssh -f -N -L 8081:192.168.100.1:8080 root@192.168.0.254
+su ceolin -c 'ssh root@192.168.0.254 "/sbin/ifconfig eth1 192.168.100.2"'
+su ceolin -c 'ssh -f -N -L 8081:192.168.100.1:8080 root@192.168.0.254'
 SENHAANTIGA=$(cat resetmodem.selenium | grep -A 1 Password | tail -n 1 | unhtml | awk '{ print $1 }')
 SENHANOVA=$(./tm602x-key  | awk '{ print $2 }')
 sed -i "s/$SENHAANTIGA/$SENHANOVA/g" resetmodem.selenium
 #reiniciar o modem
-timeout 60 xvfb-run java -jar selenium-server-standalone-2.37.0.jar -browser="*firefox /usr/lib/firefox/firefox" -htmlSuite "*firefox" "http://localhost:8081" "/home/ceolin/dotfiles/usr/watchdog/resetmodem.selenium.testsuite.html" "result.html"
+su ceolin -c 'timeout 60 xvfb-run java -jar selenium-server-standalone-2.37.0.jar -browser="*firefox /usr/lib/firefox/firefox" -htmlSuite "*firefox" "http://localhost:8081" "/home/ceolin/dotfiles/usr/watchdog/resetmodem.selenium.testsuite.html" "result.html"'
 sleep 20
-ssh root@192.168.0.254 "/sbin/reboot"
+su ceolin -c 'ssh root@192.168.0.254 "/sbin/reboot"'
 
