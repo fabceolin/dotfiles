@@ -6,7 +6,7 @@ SENHAANTIGA=$(cat resetmodem.selenium | grep -A 1 Password | tail -n 1 | unhtml 
 SENHANOVA=$(./tm602x-key  | awk '{ print $2 }')
 sed -i "s/$SENHAANTIGA/$SENHANOVA/g" resetmodem.selenium
 #reiniciar o modem
-timeout 50 java -jar selenium-server-standalone-2.37.0.jar -browser="*firefox /usr/lib/firefox/firefox" -htmlSuite "*firefox" "http://localhost:8081" "/home/ceolin/dotfiles/usr/watchdog/resetmodem.selenium.testsuite.html" "result.html"
+timeout 60 xvfb-run java -jar selenium-server-standalone-2.37.0.jar -browser="*firefox /usr/lib/firefox/firefox" -htmlSuite "*firefox" "http://localhost:8081" "/home/ceolin/dotfiles/usr/watchdog/resetmodem.selenium.testsuite.html" "result.html"
 sleep 20
 ssh root@192.168.0.254 "/sbin/reboot"
 
