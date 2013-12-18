@@ -1,0 +1,35 @@
+#!/bin/bash
+
+ROUTERCOUNT=0
+REMOTECOUNT=0
+
+ROUTER=192.168.0.254
+REMOTE="www.google.com"
+
+function pingok() {
+    HOSTNAME=$1
+    COUNT=0;
+    REACHED=0
+    while (($COUNT<5)); do
+        if (ping -c1 -w5 $HOSTNAME &>/dev/null); then
+            REACHED=1;
+            echo 0;
+            exit;
+        fi
+        let COUNT=$COUNT+1
+        sleep 1
+    done
+    echo 1;
+    exit;
+}
+
+while ((1)); do
+    PINGLOCALOK=$(pingok $ROUTER;echo $?)
+    if [ "$PINGLOCALOK" -eq 0 ]; then
+        PINGREMOTE=$(pingok $REMOTE)
+        if [ $PINGREMOTE -eq 1 ]; then
+            ./resetmodem
+        fi
+    fi
+    sleep 60
+done
