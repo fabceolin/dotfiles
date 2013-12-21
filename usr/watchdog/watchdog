@@ -28,6 +28,7 @@ while ((1)); do
     if [ "$PINGLOCALOK" -eq 0 ]; then
         PINGREMOTE=$(pingok $REMOTE)
         if [ $PINGREMOTE -eq 1 ]; then
+            echo "Modem reiniciado" | mail -s "Modem reiniciado" fabricio.ceolin@miningmath.com
             ./resetmodem
         fi
     fi
