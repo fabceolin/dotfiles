@@ -1,6 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/ceolin/workspace/MxtNfcClient/jni/nfc-jni'
-let g:netrw_dirhist_2='/home/ceolin/.xmonad'
-let g:netrw_dirhist_3='/home/ceolin'
-let g:netrw_dirhist_4='/home'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/ceolin/src/vcs/simsched.develop'
+let g:netrw_dirhist_2='/home/ceolin/src/vcs/simsched.develop/simsched/etc'

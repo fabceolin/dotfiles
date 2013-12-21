@@ -10,5 +10,4 @@ sed -i "s/$SENHAANTIGA/$SENHANOVA/g" resetmodem.selenium
 timeout 60 xvfb-run java -jar selenium-server-standalone-2.37.0.jar -browser="*firefox /usr/lib/firefox/firefox" -htmlSuite "*firefox" "http://localhost:8081" "/home/ceolin/dotfiles/usr/watchdog/resetmodem.selenium.testsuite.html" "result.html"
 sleep 20
 ssh root@192.168.0.254 "/sbin/reboot"
-kill -9 $SSH_PID
-
+pkill -u ceolin -n ssh
