@@ -1,0 +1,60 @@
+#!/bin/bash
+#For further info on the main commands used here consult the man pages
+#for "wmctrl" and/or "terminal"(this may be different if you wish to use 
+#another terminal instead of the Gnome or XFCE terminal)
+
+#No reason to run initially as root...
+if [[ $USER = root ]] ; then exit 1 ; fi
+
+USRCFG=/home/"$USER"/.wallterm.cfg
+
+if [[ -f $USRCFG ]] ; then
+    source "$USRCFG"
+else
+    echo "#Wallterm configuration"              > "$USRCFG"
+    echo "#Give a name to the terminal window" >> "$USRCFG"
+    echo "TITLE="                      >> "$USRCFG"
+    echo "#HxW size given in # of charactors"  >> "$USRCFG"
+    echo "DIMENSIONS="             >> "$USRCFG"
+    echo "#X+Y position given in pixels"       >> "$USRCFG"
+    echo "POSITION="               >> "$USRCFG"
+    echo "Please edit $USRCFG before running wallterm"
+    exit 1
+fi
+
+#"wmctrl" options for setting the window as a wallpaper.
+
+opt1="-r "$TITLE" -b add,below,sticky"
+opt2="-r "$TITLE" -b add,skip_taskbar,skip_pager"
+
+#If you use a different terminal emulator you can edit these options or
+#configure it through other mean and change any of the lines 44-49 to reflect 
+#those chamges
+TERMOPTS="--hide-borders --hide-toolbar --hide-menubar --title=$TITLE"
+
+#checks if USRCFG has been edited. Otherwise exiting with 
+if [[ -z $DIMENSIONS || -z $POSITION ]] || [[ -z $TITLE ]] ; then
+    echo "wallterm has not been configured! Please edit wallterminal before running wallterm."
+    exit 1
+fi
+
+#Uncomment only 1 of the 6 lines below if desiring different options
+#if using gnome-terminal just change "terminal" to "gnome-terminal"(both support
+#the same options listed in TERMOPTS and here 
+xfce4-terminal $TERMOPTS --geometry=$DIMENSIONS+$POSITION -x glances&
+#xfce4-terminal $TERMOPTS --maximize &
+#xfce4-terminal $TERMOPTS --fullscreen &
+#gnome-terminal $TERMOPTS --geometry=$DIMENSIONS+$POSITION &
+#gnome-terminal $TERMOPTS --maximize &
+#gnome-terminal $TERMOPTS --fullscreen &
+
+#This repeatedly evaluates if wmctrl can see the windows name as set with 
+#the opened terminals builtin options. Be sure the TITLE was set properly. 
+while true 
+do
+    if [[ "$(wmctrl -l | grep -o "$TITLE")" = $TITLE ]] ; then 
+        wmctrl $opt1 && wmctrl $opt2
+        echo 'done!'
+        break
+    fi
+done

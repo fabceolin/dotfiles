@@ -1,0 +1,4 @@
+new-session -s local
+selectp -t 0 
+send-keys -t servers.0 ls Enter
+splitw -h -p 50 'ssh 192.168.0.2 "sudo glances"'
