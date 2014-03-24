@@ -1,0 +1,5 @@
+set tabstop=4
+set shiftwidth=4
+set comments=sr:/*,mb:*,ex:*/
+set expandtab
+let g:airline_powerline_fonts=1

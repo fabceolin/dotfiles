@@ -1,0 +1,3 @@
+Bundle 'drmikehenry/vim-headerguard'
+Bundle 'vim-scripts/a.vim'
+Bundle 'valloric/youcompleteme'
