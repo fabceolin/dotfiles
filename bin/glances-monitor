@@ -1,0 +1,5 @@
+tmux start-server
+tmux new-session -d -s glances-monitor -n local
+tmux send-keys -tglances-monitor:0 'sudo glances -e -y' C-m
+tmux splitw -p 50 -h 'ssh -t -t -t 192.168.0.2 glances -e -y'
+tmux attach-session -d -tglances-monitor
