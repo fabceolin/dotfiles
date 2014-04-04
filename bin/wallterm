@@ -41,7 +41,7 @@ fi
 #Uncomment only 1 of the 6 lines below if desiring different options
 #if using gnome-terminal just change "terminal" to "gnome-terminal"(both support
 #the same options listed in TERMOPTS and here 
-xfce4-terminal $TERMOPTS --geometry=$DIMENSIONS+$POSITION -x glances&
+xfce4-terminal $TERMOPTS --geometry=$DIMENSIONS+$POSITION -x ~/bin/glances-monitor&
 #xfce4-terminal $TERMOPTS --maximize &
 #xfce4-terminal $TERMOPTS --fullscreen &
 #gnome-terminal $TERMOPTS --geometry=$DIMENSIONS+$POSITION &

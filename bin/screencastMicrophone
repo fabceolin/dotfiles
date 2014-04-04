@@ -1,7 +1,7 @@
 #!/bin/bash
 FILENAME="/tmp/screencast-$(uuidgen).mkv"
 #gst-launch ximagesrc !  ffmpegcolorspace ! queue !  vp8enc quality=0 speed=2 bitrate=1 threads=4 ! mux. pulsesrc ! audio/x-raw-int ! queue ! audioconvert ! vorbisenc quality=.1 max-bitrate=6000 ! mux. webmmux name=mux ! filesink location=$FILENAME &
-gst-launch-1.0 -e pulsesrc provide-clock=1 device=$(echo "$(cat $(find ~/.pulse/ -name \*default-source\*))") '!'  audioconvert '!' audioresample '!' liveadder name=mix '!' vorbisenc quality=0.1 '!' matroskamux name=mux '!' filesink location=$FILENAME ximagesrc ! videoconvert ! videorate max-rate=10 ! x264enc subme=1 speed-preset=1 bitrate=512 ! mux.
+gst-launch-1.0 -e pulsesrc provide-clock=1 device=$(echo "$(cat $(find ~/.pulse/ -name \*default-source\*))") '!'  audioconvert '!' audioresample '!' liveadder name=mix '!' vorbisenc quality=0.1 '!' matroskamux name=mux '!' filesink location=$FILENAME ximagesrc ! videoconvert ! videorate max-rate=30 ! x264enc subme=1 speed-preset=1 bitrate=8196 ! mux.
 PID=$!
 echo $PID >/tmp/gst-record.pid
 echo $FILENAME
