@@ -1,0 +1,14 @@
+alias tmux="TERM=screen-256color-bce tmux"
+tmux start-server
+tmux set -g default-terminal "xterm-256color"
+tmux set -g mode-mouse on
+
+tmux bind-key c-y run "tmux show-buffer | xsel -i"
+# copy primary X selection into tmux's selection buffer with PREFIX+CTRL+P
+tmux bind-key c-p run "xsel -o | tmux load-buffer -"
+
+tmux new-session -d -s local -n local
+for i in $(ls ~/.byobu/*.tmux); do
+    tmux source-file  $i;
+done
+tmux attach-session -d -tlocal
