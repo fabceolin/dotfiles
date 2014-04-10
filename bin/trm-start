@@ -1,0 +1,17 @@
+tmux start-server
+tmux new-session -d -s trm -n gstlaunch
+tmux send-keys -ttrm:0 '
+bash <<EOF
+cd ~/src/trm-emb/data/filme/
+gst-launch-1.0 filesrc location="Filme 1.MOV" ! qtdemux name=dmx  multiqueue name=mq  dmx.video_0 ! mq. mq. ! avdec_h264 ! videoconvert ! videorate ! video/x-raw,framerate=4/1 ! overlay.video_sink dmx.subtitle_0 ! mq. mq. ! queue ! tee name=tee0 ! queue ! overlay.text_sink textoverlay name=overlay wait-text=false ! videoconvert ! xvimagesink tee0. ! tcpserversink port=3000 host=0.0.0.0;
+EOF
+' 'C-m'
+tmux new-window -ttrm:1 -n socat
+tmux send-keys -ttrm:1 'stdbuf -i0 -o0 socat tcp4:localhost:3000 -  | stdbuf -i0 -o0 sed "s#\(.\)\$\(.\+\)\$#\1\n\$\2#g" | stdbuf -i0 -o0 socat - tcp4-listen:3001; ' 'C-m'
+tmux new-window -ttrm:2 -n gpsd
+tmux send-keys -ttrm:2 'gpsd -n -D 2 -N tcp://localhost:3001' 'C-m'
+tmux new-window -ttrm:3 -n foxtrotgps
+tmux send-keys -ttrm:3 'foxtrotgps' 'C-m'
+tmux new-window -ttrm:4 -n screencast
+tmux send-keys -ttrm:4 '~/dotfiles/bin/screencastInternalAudio' 'C-m'
+tmux attach-session -ttrm
