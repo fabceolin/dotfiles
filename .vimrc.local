@@ -1,63 +1,14 @@
-set tabstop=4
-set shiftwidth=4
-set comments=sr:/*,mb:*,ex:*/
-set expandtab
-set incsearch
-set nopaste
-set autoindent
-set fileformats=unix,dos
-
-command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1
-"let g:syntastic_cpp_include_dirs = [ '/opt/ibm/ILOG/CPLEX_Studio125/cplex/include/', '/opt/ibm/ILOG/CPLEX_Studio125/concert/include/' , '/opt/ibm/ILOG/CPLEX_Studio125/opl/include/' ]
-let g:syntastic_cpp_compiler = '/usr/bin/clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
-let g:clang_complete_copen = 1
-let g:clang_debug = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:clang_library_path = '/home/ceolin/.vim/bundle/youcompleteme/python/'
+let g:clang_library_path = '/usr/lib/llvm-3.5/lib'
+let g:clang_use_library=1
+"~let g:clang_library_path = '/usr/lib/clang'
+" let g:clang_library_path="/usr/lib/"
+let g:clang_auto_select=1 "select first entry in popup menu but don't insert in code
+let g:clang_complete_auto=1 "auto complete after -> . and ::
+let g:clang_complete_copen=1 "open quick fix on error
+let g:clang_complete_hl_errors=1 " highlight errors and warnings 
+let g:clang_periodic_quickfix=1 " update quickfix periodically
+let g:clang_trailing_placeholder=1 " add trailing placeholder after function
+let g:clang_close_preview=1 " close preview window after completion
+let g:clang_user_options='-Wc++11-extensions -std=c++11'
+let g:clang_debug=1
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_show_diagnostics_ui = 1
-
-
-map :cpy :0r Header.txt
-map :trail :%s/\s\+$//e
-cmap w!! w !sudo tee > /dev/null %
-
-
-function! IndentLine()
-"    .!astyle -p -P -H -U -o -O 
-    .!indent -nbad -bap -nbc -bbo -hnl -br -brs -c33 -cd33 -ncdb -ce -ci4 -cli0 -d0 -di1 -nfc1 -i8 -ip0 -l9999 -lp -npcs -nprs -npsl -sai -saf -saw -ncs -nsc -sob -nfca -cp33 -ss -ts8 -il1
-    .normal == 
-endfunction
-
-function! IndentBlock()
-    '<,'>!indent -nbad -bap -nbc -bbo -hnl -br -brs -c33 -cd33 -ncdb -ce -ci4 -cli0 -d0 -di1 -nfc1 -i8 -ip0 -l9999 -lp -npcs -nprs -npsl -sai -saf -saw -ncs -nsc -sob -nfca -cp33 -ss -ts8 -il1
-    '<,'>normal == 
-endfunction
-
-let g:DoxygenToolkit_commentType = "C++"
-
-function! GnuIndent()
-    setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
-    setlocal shiftwidth=2
-    setlocal tabstop=4
-endfunction
-au FileType c,cpp call GnuIndent() 
-
-set t_Co=256
-let g:solarized_termcolors=256
-
-nnoremap <C-'>       :bn<cr>
-nnoremap <C-;>       :bp<cr>
-
-map <C-\> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
-imap <C-\> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
-
-set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
-
-set ignorecase!
