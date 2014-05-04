@@ -1,0 +1,11 @@
+#!/bin/bash
+SKYPENAME=$1
+
+NAMES=(narcelio.filho.miningmath.com walaceos echo123 alexandre.marinho.miningmath rodrigo_capel)
+
+for i in ${NAMES[*]}; do
+    if [ $SKYPENAME == "$i" ]; then
+        notify-send -u critical -t 0 "$SKYPENAME is online" -i skype
+    fi
+done
+
