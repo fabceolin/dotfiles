@@ -1,0 +1,20 @@
+#!/bin/bash
+# Instalacao das Funcoes ZZ (www.funcoeszz.net)
+export ZZOFF=""  # desligue funcoes indesejadas
+export ZZPATH="/home/ceolin/src/vcs/funcoeszz/funcoeszz"  # script
+export ZZDIR="/home/ceolin/src/vcs/funcoeszz/zz"
+source "$ZZPATH"
+while read -p "Rodar roteiro (S/N)" RESP; do
+    if [ "$RESP" == "S" ]; then
+        while read CORREIO; do
+            echo $CORREIO
+            zzrastreamento $CORREIO
+        done < ~/.rastreamento
+        gcalcli --configFolder ~/.gcalcli_fabceolin@gmail.com/ calw
+        gcalcli --configFolder ~/.gcalcli_fabricio.ceolin@miningmath.com/ calw
+        geeknote find --count 999 --notebooks "00 Agora"
+        geeknote find --count 999 --notebooks "01 Hoje"
+    else
+        break;
+    fi
+done

@@ -1,0 +1,3 @@
+#!/bin/bash
+geeknote find --count 999 --tags mms --notebooks "00 Agora"
+geeknote find --count 999 --tags mms --notebooks "01 Hoje"
