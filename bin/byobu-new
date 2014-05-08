@@ -11,4 +11,6 @@ tmux new-session -d -s local -n local
 for i in $(ls ~/.byobu/*.tmux); do
     tmux source-file  $i;
 done
+tmux send-keys -tlocal:0 'byobu-ctrl-a screen' Enter
+
 tmux attach-session -d -tlocal

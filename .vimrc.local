@@ -17,17 +17,12 @@ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 let g:clang_complete_copen = 1
 let g:clang_debug = 1
 let g:syntastic_always_populate_loc_list = 1
-let g:clang_library_path = '/home/ceolin/.vim/bundle/youcompleteme/python/'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_show_diagnostics_ui = 1
+let g:clang_library_path = '/usr/lib/llvm-3.5/lib'
+let g:ycm_confirm_extra_conf = 1
 
 
 map :cpy :0r Header.txt
 map :trail :%s/\s\+$//e
-cmap w!! w !sudo tee > /dev/null %
-
 
 function! IndentLine()
 "    .!astyle -p -P -H -U -o -O 
@@ -49,8 +44,7 @@ function! GnuIndent()
 endfunction
 au FileType c,cpp call GnuIndent() 
 
-set t_Co=256
-let g:solarized_termcolors=256
+let g:solarized_termcolors=16
 
 nnoremap <C-'>       :bn<cr>
 nnoremap <C-;>       :bp<cr>

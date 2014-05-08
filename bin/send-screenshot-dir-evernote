@@ -1,0 +1,2 @@
+#!/bin/bash
+run-one iwatch -r -e close_write -c 'PATH=$PATH:/home/ceolin/bin /home/ceolin/bin/send-attachment-evernote %f' /home/ceolin/screenshot

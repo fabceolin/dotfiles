@@ -1,0 +1,5 @@
+#!/bin/bash
+FILE=$(mktemp)
+xsel -o >$FILE
+send-attachment-evernote $FILE
+notify-send -e 2000 Clipboard "Clipboard Sent to Evernote"

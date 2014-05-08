@@ -1,0 +1,5 @@
+#!/bin/bash
+geeknote find --count 999 --tags trm --notebooks "00 Agora"
+geeknote find --count 999 --tags trm --notebooks "01 Hoje"
+geeknote find --count 999 --tags trm --notebooks "02 Essa semana"
+geeknote find --count 999 --tags trm --notebooks "03 Esse mes"
