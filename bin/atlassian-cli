@@ -1,0 +1,7 @@
+#!/bin/bash
+ATLAS_CLI_DIR=/home/$USER/src/vcs/atlassian-cli
+RVM_DIR=/home/$USER/.rvm
+GEMSET=ruby-2.0.0-p481@atlascli
+#cd $ATLAS_CLI_DIR && $RVM_DIR/gems/$GEMSET -S bundle exec $ATLAS_CLI_DIR/bin/atlas-jira-cli "$@"
+cd $ATLAS_CLI_DIR && bundle exec $ATLAS_CLI_DIR/bin/atlas-jira-cli "$@"
+# .rvm/gems/ruby-2.0.0-p48

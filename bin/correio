@@ -1,0 +1,16 @@
+#!/bin/bash
+# Instalacao das Funcoes ZZ (www.funcoeszz.net)
+export ZZOFF=""  # desligue funcoes indesejadas
+export ZZPATH="/home/ceolin/src/vcs/funcoeszz/funcoeszz"  # script
+export ZZDIR="/home/ceolin/src/vcs/funcoeszz/zz"
+source "$ZZPATH"
+while read -p "Rodar roteiro (S/N)" RESP; do
+    if [ "$RESP" == "S" ]; then
+        while read CORREIO; do
+            echo $CORREIO
+            zzrastreamento $CORREIO
+        done < ~/.rastreamento
+    else
+        break;
+    fi
+done
