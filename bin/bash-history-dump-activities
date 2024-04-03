@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+import argparse
+import re
+from datetime import datetime
+
+# Function to convert timestamp to datetime
+def timestamp_to_datetime(timestamp):
+    return datetime.utcfromtimestamp(int(timestamp))
+
+# Function to parse .bash_history and filter commands between dates
+def filter_history(start_date, end_date=None, log_file='/home/fabricio/.bash_history'):
+    commands = []
+    timestamp_pattern = re.compile(r'^#\d+$')  # Pattern to match timestamps
+    with open(log_file, 'r') as file:
+        lines = file.readlines()
+        command_blocks = []  # To hold command blocks
+        current_command = []  # To accumulate multi-line commands
+        for line in reversed(lines):
+            # Check if line matches the timestamp pattern
+            if timestamp_pattern.match(line):
+                if current_command:  # If there's a command accumulated
+                    # Prepend timestamp and reverse to maintain order in block
+                    command_blocks.append((line, list(reversed(current_command))))
+                    current_command = []  # Reset for the next command
+            else:
+                current_command.append(line.rstrip('\n'))  # Use rstrip to only remove trailing newlines
+        if current_command:  # Catch any command at the start of the file
+            command_blocks.append(('', list(reversed(current_command))))
+
+        for timestamp_line, command_lines in command_blocks:
+            if timestamp_line:  # Check if timestamp exists
+                timestamp = timestamp_line[1:].strip()
+                command_datetime = timestamp_to_datetime(timestamp)
+                if start_date <= command_datetime <= end_date:
+                    commands.append((command_datetime, '\n'.join(command_lines)))
+                elif command_datetime < start_date:
+                    break  # Since we are going backwards, no need to continue if we've passed start_date
+            else:  # If no timestamp, it's an isolated command (unlikely but possible)
+                if command_lines:  # Ensure there's a command present
+                    commands.append((None, '\n'.join(command_lines)))  # No timestamp available
+
+    commands.reverse()  # Reverse to maintain the original chronological order
+    return commands
+
+# Main function to execute the filtering
+def main():
+    parser = argparse.ArgumentParser(description='Filter .bash_history by date range.')
+    parser.add_argument('start_date', type=str, help='Start date in YYYY-MM-DD format')
+    parser.add_argument('-e', '--end_date', type=str, help='End date in YYYY-MM-DD format', default=datetime.now().strftime('%Y-%m-%d'))
+    parser.add_argument('-f', '--file', type=str, help='Path to the .bash_history file', default='/home/fabricio/.bash_history')
+    args = parser.parse_args()
+
+    start_date_str = args.start_date + " 00:00:00"
+    end_date_str = args.end_date + " 23:59:59"
+    
+    start_date = datetime.strptime(start_date_str, '%Y-%m-%d %H:%M:%S')
+    end_date = datetime.strptime(end_date_str, '%Y-%m-%d %H:%M:%S')
+    
+    commands = filter_history(start_date, end_date, args.file)
+    for index, (cmd_datetime, cmd) in enumerate(commands, start=1):
+        date_str = cmd_datetime.strftime('%Y-%m-%d %H:%M:%S') if cmd_datetime else 'No timestamp'
+        print(f"{index:5}  {date_str}\n{cmd}\n")
+
+if __name__ == '__main__':
+    main()
+

@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+import argparse
+import sqlite3
+from datetime import datetime
+import shutil
+import os
+import json
+
+def chrome_date_to_unix_timestamp(chrome_date):
+    return chrome_date / 1000000 - 11644473600
+
+def unix_timestamp_to_chrome_date(timestamp):
+    return (timestamp + 11644473600) * 1000000
+
+def get_history(profile_path, start_date, end_date):
+    temp_path = "/tmp/chrome_history_temp.db"
+    shutil.copyfile(profile_path, temp_path)
+    conn = sqlite3.connect(temp_path)
+    cursor = conn.cursor()
+    start_timestamp = unix_timestamp_to_chrome_date(start_date.timestamp())
+    end_timestamp = unix_timestamp_to_chrome_date(end_date.timestamp())
+    query = """SELECT url, title, datetime(last_visit_time / 1000000 - 11644473600, 'unixepoch', 'localtime') as visit_date
+               FROM urls WHERE last_visit_time BETWEEN ? AND ? ORDER BY last_visit_time DESC;"""
+    cursor.execute(query, (start_timestamp, end_timestamp))
+    for row in cursor.fetchall():
+        print(f"{row[2]} - {row[1]} - {row[0]}")
+    conn.close()
+    os.remove(temp_path)
+
+def list_profiles(profile_base_path):
+    if not os.path.isdir(profile_base_path):
+        print("The specified base path for Chrome profiles does not exist.")
+        return
+    
+    for profile_dir in os.listdir(profile_base_path):
+        profile_path = os.path.join(profile_base_path, profile_dir)
+        escaped_profile_path = profile_path.replace(" ", "\\ ")
+        preferences_path = os.path.join(profile_path, 'Preferences')
+        if os.path.isdir(profile_path) and os.path.isfile(preferences_path):
+            with open(preferences_path, 'r', encoding='utf-8') as prefs_file:
+                try:
+                    prefs_data = json.load(prefs_file)
+                    profile_name = prefs_data.get("profile", {}).get("name", "N/A")
+                    print(f"Path: {escaped_profile_path}, Profile Name: {profile_name}")
+                except json.JSONDecodeError:
+                    print(f"Path: {escaped_profile_path}, Profile Name: Could not decode Preferences")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Google Chrome history viewer and profile lister.")
+    parser.add_argument("--profile-path", type=str, default=f"/home/{os.environ.get('USERNAME', 'yourusername')}/.config/google-chrome", help="Base path to the Chrome user profiles.")
+    parser.add_argument("--start-date", type=str, help="Start date in YYYY-MM-DD format.")
+    parser.add_argument("--end-date", type=str, default=datetime.now().strftime("%Y-%m-%d"), help="End date in YYYY-MM-DD format. Defaults to current date.")
+    parser.add_argument("--list-profiles", action="store_true", help="List all Chrome profile directories and names.")
+    
+    args = parser.parse_args()
+    
+    if args.list_profiles:
+        list_profiles(args.profile_path)
+    else:
+        if not args.start_date:
+            parser.error("--start-date is required unless --list-profiles is specified.")
+        start_date = datetime.strptime(args.start_date, "%Y-%m-%d")
+        end_date = datetime.strptime(args.end_date, "%Y-%m-%d")
+        default_history_path = os.path.join(args.profile_path, "Default", "History")
+        get_history(default_history_path, start_date, end_date)
