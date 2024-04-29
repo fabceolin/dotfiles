@@ -1,0 +1,4 @@
+/bin/turn-off-hard-rig.sh filter=git-crypt diff=git-crypt
+/bin/turn-off-rig.sh filter=git-crypt diff=git-crypt
+/bin/turn-on-rig.sh filter=git-crypt diff=git-crypt
+
