@@ -2,13 +2,14 @@
 import argparse
 import re
 from datetime import datetime
+import os
 
 # Function to convert timestamp to datetime
 def timestamp_to_datetime(timestamp):
     return datetime.utcfromtimestamp(int(timestamp))
 
 # Function to parse .bash_history and filter commands between dates
-def filter_history(start_date, end_date=None, log_file='/home/fabricio/.bash_history'):
+def filter_history(start_date, end_date=None, log_file=f"/home/{os.environ.get('USERNAME', 'yourusername')}/.bash_history"):
     commands = []
     timestamp_pattern = re.compile(r'^#\d+$')  # Pattern to match timestamps
     with open(log_file, 'r') as file:
@@ -47,7 +48,7 @@ def main():
     parser = argparse.ArgumentParser(description='Filter .bash_history by date range.')
     parser.add_argument('start_date', type=str, help='Start date in YYYY-MM-DD format')
     parser.add_argument('-e', '--end_date', type=str, help='End date in YYYY-MM-DD format', default=datetime.now().strftime('%Y-%m-%d'))
-    parser.add_argument('-f', '--file', type=str, help='Path to the .bash_history file', default='/home/fabricio/.bash_history')
+    parser.add_argument('-f', '--file', type=str, help='Path to the .bash_history file', default=f"/home/{os.environ.get('USERNAME', 'yourusername')}/.bash_history")
     args = parser.parse_args()
 
     start_date_str = args.start_date + " 00:00:00"
