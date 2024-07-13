@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 import os
 import fnmatch
@@ -10,14 +11,13 @@ def find_files(path, patterns, exclude_dirs):
         dirs[:] = [d for d in dirs if os.path.abspath(os.path.join(root, d)) not in exclude_dirs_set]
         
         for file in files:
-            for pattern in patterns:
-                if fnmatch.fnmatch(file, pattern):
-                    file_path = os.path.join(root, file)
-                    print(f"File: {file_path}")
-                    with open(file_path, 'r') as f:
-                        content = f.read()
-                        print(content)
-                    print()  # Add a blank line for separation
+            if any(fnmatch.fnmatch(file, pattern) for pattern in patterns):
+                file_path = os.path.join(root, file)
+                print(f"File: {file_path}")
+                with open(file_path, 'r') as f:
+                    content = f.read()
+                    print(content)
+                print()  # Add a blank line for separation
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Find files matching patterns and print their content.")
