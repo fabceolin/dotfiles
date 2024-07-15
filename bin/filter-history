@@ -45,7 +45,23 @@ def filter_history(start_date, end_date=None, log_file=None):
 
 # Main function to execute the filtering
 def main():
-    parser = argparse.ArgumentParser(description='Filter .bash_history by date range (YYYY-MM-DD format).')
+    epilog_text = """
+    # Bash suggested configuration
+    shopt -s histappend              # append new history items to .bash_history
+    export HISTCONTROL=ignorespace   # leading space hides commands from history
+    export HISTFILESIZE=9999999      # increase history file size (default is 500)
+    export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
+    # ensure synchronization between bash memory and history file
+    export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+    export HISTTIMEFORMAT="%F %T "
+    shopt -s cmdhist
+    """
+
+    parser = argparse.ArgumentParser(
+        description='Filter .bash_history by date range (YYYY-MM-DD format).',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=epilog_text
+    )
     parser.add_argument('start_date', type=str, help='Start date in YYYY-MM-DD format')
     parser.add_argument('-e', '--end_date', type=str, help='End date in YYYY-MM-DD format', default=(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d'))
     parser.add_argument('-f', '--file', type=str, help='Path to the .bash_history file', default=os.path.join(os.getenv('HOME'), '.bash_history'))
