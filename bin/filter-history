@@ -32,7 +32,7 @@ def filter_history(start_date, end_date=None, log_file=None):
             if timestamp_line:  # Check if timestamp exists
                 timestamp = timestamp_line[1:].strip()
                 command_datetime = timestamp_to_datetime(timestamp)
-                if start_date <= command_datetime < end_date:
+                if (start_date <= command_datetime) and (command_datetime < end_date):
                     commands.append((command_datetime, '\n'.join(command_lines)))
                 elif command_datetime < start_date:
                     break  # Since we are going backwards, no need to continue if we've passed start_date
