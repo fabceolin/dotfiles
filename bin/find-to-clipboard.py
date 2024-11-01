@@ -3,7 +3,7 @@ import argparse
 import os
 import fnmatch
 
-def find_files(paths, include_patterns, exclude_patterns, maxdepth):
+def find_files(paths, include_patterns, exclude_patterns, maxdepth, names_only=False):
     included_files = set()
 
     # First, process include patterns that are paths to existing files
@@ -43,20 +43,28 @@ def find_files(paths, include_patterns, exclude_patterns, maxdepth):
     # Process the included files
     for file_path in included_files:
         rel_file_path = os.path.relpath(file_path)
-        try:
-            with open(file_path, 'r', errors='ignore') as f:  # Ignore encoding errors
-                content = f.read()
-                print(f"File: {rel_file_path}\n{content}\n")
-        except Exception as e:
-            print(f"Error reading file {rel_file_path}: {str(e)}")
+        if names_only:
+            print(f"File: {rel_file_path}")
+        else:
+            try:
+                with open(file_path, 'r', errors='ignore') as f:  # Ignore encoding errors
+                    content = f.read()
+                    print(f"File: {rel_file_path}\n{content}\n")
+            except Exception as e:
+                print(f"Error reading file {rel_file_path}: {str(e)}")
 
 if __name__ == "__main__":
-        parser = argparse.ArgumentParser(description="Find files matching patterns and print their content.")
-        parser.add_argument('paths', nargs='*', default=['.'], help='Paths to search for files (default: current directory)')
-        parser.add_argument('-i', '--include', metavar='INCLUDE_PATTERN', type=str, nargs='+', required=True, help='Patterns to include files in the search.')
-        parser.add_argument('-e', '--exclude', metavar='EXCLUDE_PATTERN', type=str, nargs='+', default=[], help='Patterns to exclude files and directories from the search.')
-        parser.add_argument('--maxdepth', type=int, default=float('inf'), help='Maximum depth to search (default: no limit).')
+    parser = argparse.ArgumentParser(description="Find files matching patterns and print their content.")
+    parser.add_argument('paths', nargs='*', default=['.'],
+                       help='Paths to search for files (default: current directory)')
+    parser.add_argument('-i', '--include', metavar='INCLUDE_PATTERN', type=str, nargs='+',
+                       required=True, help='Patterns to include files in the search.')
+    parser.add_argument('-e', '--exclude', metavar='EXCLUDE_PATTERN', type=str, nargs='+',
+                       default=[], help='Patterns to exclude files and directories from the search.')
+    parser.add_argument('--maxdepth', type=int, default=float('inf'),
+                       help='Maximum depth to search (default: no limit).')
+    parser.add_argument('-n', '--names-only', action='store_true',
+                       help='Show only file names without content.')
 
-        args = parser.parse_args()
-        find_files(args.paths, args.include, args.exclude, args.maxdepth)
-
+    args = parser.parse_args()
+    find_files(args.paths, args.include, args.exclude, args.maxdepth, args.names_only)
